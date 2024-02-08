@@ -1,0 +1,111 @@
+using System;
+using System.Transactions;
+using System.Xml.Schema;
+
+abstract class Animal
+{
+    public string Name { get; set; }
+    public string Colour { get; set; }
+    public string Age { get; set; }
+    public string Height { get; set; }
+    
+
+
+    public abstract void Eat();
+
+    
+    public Animal(string name, string colour, string age, string height)
+    {
+        Name = name;
+        Colour = colour;
+        Age = age;
+        Height = height;
+    }
+
+    
+    public string GetName() => Name;
+    public string GetColour() => Colour;
+    public string GetAge() => Age;
+    public string GetHeight() => Height;
+}
+
+class Dog : Animal
+{
+    public Dog(string name, string colour, string age, string height) : base(name, colour, age, height) { }
+
+    
+
+    public override void Eat()
+    {
+        Console.WriteLine("Dogs eat meat.");
+    }
+}
+
+class Cat : Animal
+{
+    public Cat(string name, string colour, string age, string height) : base(name, colour, age, height) { }
+
+
+    public override void Eat()
+    {
+        Console.WriteLine("Cats eat mice.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Animal> animals = new List<Animal>();
+
+        
+        
+        Console.Write("Enter The Dogs Name: ");
+        string dogName = Console.ReadLine();
+        Console.WriteLine("Enter The Dogs Height: ");
+        string dogHeight = Console.ReadLine();
+        Console.WriteLine("Enter The Dogs Color: ");
+        string dogColor = Console.ReadLine();
+        Console.WriteLine("Enter The Dogs Age: ");
+        string dogAge = Console.ReadLine();
+
+
+        Dog dog = new Dog(dogName, dogColor, dogAge, dogHeight);
+        Console.WriteLine($"Name: {dog.GetName()}, Colour: {dog.GetColour()}, Age: {dog.GetAge()}");
+        dog.Eat();
+        animals.Add(dog);
+
+
+
+
+        Console.Write("Enter cat's name: ");
+        string catName = Console.ReadLine();
+        Console.WriteLine("Enter The Cats Height: ");
+        string catHeight = Console.ReadLine();
+        Console.WriteLine("Enter The Cats Color: ");
+        string catColor = Console.ReadLine();
+        Console.WriteLine("Enter The Cats Age: ");
+        string catAge = Console.ReadLine();
+
+
+        Cat cat = new Cat(catName, catColor, catAge, catHeight);
+        Console.WriteLine($"Name: {cat.GetName()}, Colour: {cat.GetColour()}, Age: {cat.GetAge()}");
+        cat.Eat();
+        animals.Add(cat);
+
+    }
+
+
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
